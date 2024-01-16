@@ -14,7 +14,7 @@ const ethereumProvider = new ethers.providers.JsonRpcProvider(process.env.ETHERE
 const ethereumWallet = ethers.Wallet.fromMnemonic(process.env.ETHEREUM_MNEMONIC).connect(ethereumProvider);
 
 const ethTxOverrides = {
-  maxFeePerGas: ethers.utils.parseUnits('20', 'gwei'),
+  maxFeePerGas: ethers.utils.parseUnits('35', 'gwei'),
   maxPriorityFeePerGas: ethers.utils.parseUnits('1.5', 'gwei'),
 }
 

@@ -4,8 +4,8 @@ const process = require('process');
 const ethers = require('ethers');
 
 const RocketArbitrumPriceMessenger = require(
-    '../out/RocketArbitrumPriceMessenger.sol/RocketArbitrumPriceMessenger.json');
-const RocketArbitrumPriceOracle = require('../out/RocketArbitrumPriceOracle.sol/RocketArbitrumPriceOracle.json');
+    './out/RocketArbitrumPriceMessenger.sol/RocketArbitrumPriceMessenger.json');
+const RocketArbitrumPriceOracle = require('./out/RocketArbitrumPriceOracle.sol/RocketArbitrumPriceOracle.json');
 
 const arbitrumProvider = new ethers.providers.JsonRpcProvider(process.env.ARBITRUM_RPC);
 
@@ -13,7 +13,7 @@ const ethereumProvider = new ethers.providers.JsonRpcProvider(process.env.ETHERE
 const ethereumWallet = ethers.Wallet.fromMnemonic(process.env.ETHEREUM_MNEMONIC).connect(ethereumProvider);
 
 const ethTxOverrides = {
-  maxFeePerGas: ethers.utils.parseUnits('20', 'gwei'),
+  maxFeePerGas: ethers.utils.parseUnits('35', 'gwei'),
   maxPriorityFeePerGas: ethers.utils.parseUnits('1.5', 'gwei'),
 }
 
@@ -25,11 +25,11 @@ async function submit() {
 
   // Construct the calldata of the L2 transaction for the estimator
   const oracleIface = new ethers.utils.Interface(RocketArbitrumPriceOracle.abi);
-  const data = oracleIface.encodeFunctionData('updateRate', [ethers.BigNumber.from('1')]);
+  const data = oracleIface.encodeFunctionData('updateRate', [ethers.BigNumber.from('1'), 1]);
 
   /*
     The tx value is calculated by gasLimit * maxFeePerGas + maxSubmissionCost
-    gasLimit can be safely hardcoded to 40,000 (it's the gas limit of the L2 transaction, so it's well known)
+    gasLimit can be safely hardcoded to 70,000 (it's the gas limit of the L2 transaction, so it's well known)
     maxFeePerGas can be queried from a third party gas estimator or via an eth_gasPrice RPC call to an Arbitrum node
     maxSubmissionCost can be calculated with the following formula: (1400 + 6 * dataLength) * baseFee
     maxSubmissionCost should have a buffer in case baseFee changes, a large buffer (300%) should be fine as it is such a small value

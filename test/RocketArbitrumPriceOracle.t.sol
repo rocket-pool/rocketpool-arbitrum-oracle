@@ -60,7 +60,7 @@ contract RocketArbitrumPriceOracleTest is Test {
 
     function testNonOwnerUpdate() public {
         vm.expectRevert();
-        priceOracle.updateRate(2 ether);
+        priceOracle.updateRate(2 ether, block.timestamp);
     }
 
     function testRates(uint256 ethTotal, uint256 rethSupply) public {
@@ -116,6 +116,6 @@ contract RocketArbitrumPriceOracleTest is Test {
 
     function testDirectUpdateRate() public {
         vm.expectRevert();
-        priceOracle.updateRate(1.4 ether);
+        priceOracle.updateRate(1.4 ether, block.timestamp);
     }
 }

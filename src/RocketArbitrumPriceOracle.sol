@@ -12,7 +12,7 @@ contract RocketArbitrumPriceOracle {
     /// @notice The rETH exchange rate in the form of how much ETH 1 rETH is worth
     uint256 public rate;
 
-    /// @notice The timestamp of the block in which the rate was last updated
+    /// @notice The timestamp of the L1 block in which the rate was last submitted from
     uint256 public lastUpdated;
 
     /// @notice Should be set to the address of the messenger on L1
@@ -28,12 +28,14 @@ contract RocketArbitrumPriceOracle {
     }
 
     /// @notice Called by the messenger contract on L1 to update the exchange rate
-    function updateRate(uint256 _newRate) external {
+    function updateRate(uint256 _newRate, uint256 _timestamp) external {
         // Only allow calls from self
         require(msg.sender == AddressAliasHelper.applyL1ToL2Alias(owner));
+        // Check the rate is fresher than current
+        require(_timestamp > lastUpdated);
         // Update state
         rate = _newRate;
-        lastUpdated = block.timestamp;
+        lastUpdated = _timestamp;
         // Emit event
         emit RateUpdated(_newRate);
     }

@@ -56,7 +56,7 @@ contract RocketArbitrumPriceMessenger {
     function submitRate(uint256 _maxSubmissionCost, uint256 _gasLimit, uint256 _gasPriceBid) external payable {
         lastRate = rate();
         // Send the cross chain message
-        bytes memory data = abi.encodeWithSignature('updateRate(uint256)', lastRate);
+        bytes memory data = abi.encodeWithSignature('updateRate(uint256,uint256)', lastRate, block.timestamp);
         inbox.createRetryableTicket{value: msg.value}(
             l2Target,           // Target address
             0,                  // Call value
