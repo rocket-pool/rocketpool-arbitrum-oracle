@@ -22,7 +22,7 @@ integration testing before promotion to mainnet.
 
 | Chain | RocketOvmPriceMessenger (EVM) | RocketOvmPriceOracle (Arbitrum) | RocketBalancerRateProvider (Arbitrum) |
 | -- | -- | -- | -- |
-| Mainnet | [0x05330300f829AD3fC8f33838BC88CFC4093baD53](https://etherscan.io/address/0x05330300f829AD3fC8f33838BC88CFC4093baD53) | [0x594Fb75D3dc2DFa0150Ad03F99F97817747dd4E1](https://arbiscan.io/address/0x594Fb75D3dc2DFa0150Ad03F99F97817747dd4E1) | [0xA73ec45Fe405B5BFCdC0bF4cbc9014Bb32a01cd2](https://arbiscan.io/address/0xA73ec45Fe405B5BFCdC0bF4cbc9014Bb32a01cd2) |
+| Mainnet | [0x312FcFB03eC9B1Ea38CB7BFCd26ee7bC3b505aB1](https://etherscan.io/address/0x312FcFB03eC9B1Ea38CB7BFCd26ee7bC3b505aB1) | [0x7EcCBbd05830EdF593d30005B8F69E965AF4D59f](https://arbiscan.io/address/0x7EcCBbd05830EdF593d30005B8F69E965AF4D59f) | [0xd4E96eF8eee8678dBFf4d535E033Ed1a4F7605b7](https://arbiscan.io/address/0xd4E96eF8eee8678dBFf4d535E033Ed1a4F7605b7) |
 | Goerli | [0x2b52479F6ea009907e46fc43e91064D1b92Fdc86](https://goerli.etherscan.io/address/0x2b52479F6ea009907e46fc43e91064D1b92Fdc86) | [0x594Fb75D3dc2DFa0150Ad03F99F97817747dd4E1](https://goerli.arbiscan.io/address/0x594Fb75D3dc2DFa0150Ad03F99F97817747dd4E1) | tba |
 
 ## Deploying and Submitting
